@@ -19,6 +19,8 @@ class CreateCustomersTable extends Migration
             $table->string('customer_name');
             $table->string('phone');
             $table->string('address',255);
+            $table->foreignId('gender_id');
+            $table->foreignId('status_id');
             $table->timestamps();
         });
     }
