@@ -36,9 +36,9 @@
                                     <td>{{ $customer->customer_name }}</td>
                                     <td>{{ $customer->address }}</td>
                                     <td>
-                                        <a href=""><i class="bi bi-eye"></i></a>
-                                        <a href=""><i class="bi bi-pencil-square"></i></a>
-                                        <a href=""><i class="bi bi-trash"></i></a>
+                                        <a href="" class="badge bg-primary"><i class="bi bi-eye"></i></a>
+                                        <a href="" class="badge bg-warning"><i class="bi bi-pencil-square"></i></a>
+                                        <a href="" class="badge bg-danger"><i class="bi bi-trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
