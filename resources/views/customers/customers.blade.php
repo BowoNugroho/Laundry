@@ -15,6 +15,7 @@
                 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm body" data-bs-toggle="modal"
                     data-bs-target="#exampleModal"><i class="bi bi-person-plus-fill"></i>
                     Tambah </a>
+                @include('customers.add_customer')
             </div>
             <div class="card-body">
                 <div class="table-responsive">
