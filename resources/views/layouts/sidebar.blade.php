@@ -7,7 +7,7 @@
             <div class="sidebar-brand-text mx-3">Hoki Laundry</div>
         </a>
         <hr class="sidebar-divider my-0">
-        <li class="nav-item active">
+        <li class="nav-item {{ Request::is('dashboard') ? 'active' : '' }}">
             <a class="nav-link" href="/dashboard">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {{ Request::is('customer') ? 'active' : '' }}">
             <a class="nav-link " href="/customer" data-target="#collapseUtilities" aria-expanded="true"
                 aria-controls="collapseUtilities">
                 <i class="bi bi-people-fill"></i>
