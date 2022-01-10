@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Response;
 
 class CustomerController extends Controller
 {
@@ -39,7 +41,38 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'phone' => 'required|max:255',
+            'address' => 'required|max:255',
+            'gender' => 'required',
+            'status' => 'required'
+        ]);
+
+        $input = $request->all();
+
+        if ($validator->passes()) {
+            
+            // Store your user in database 
+            
+            return Response::json(['success' => '1']);
+            
+        }
+        
+        return Response::json(['errors' => $validator->errors()]);
+    
+    //     #Store Unique Order/Product Number
+    //     $unique_no = Customer::orderBy('id', 'DESC')->pluck('id')->first();
+    //     if($unique_no == null or $unique_no == ""){
+    //     #If Table is Empty
+    //     $unique_no = 1;
+    //     }
+    //     else{
+    //     #If Table has Already some Data
+    //     $unique_no = $unique_no + 1;
+    //   }
+
+    //   return 'PHL'.sprintf("%04s", $unique_no);
     }
 
     /**
