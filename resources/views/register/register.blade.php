@@ -15,7 +15,7 @@
                                 <div class="form-group ">
                                     <input type="text" name="name"
                                         class="form-control form-control-user @error('name') is-invalid @enderror"
-                                        id="exampleFirstName" placeholder="Name" value="{{ old('name') }}">
+                                        id="exampleName" placeholder="Name" value="{{ old('name') }}">
                                     @error('name')
                                         <div class="invalid-feadback">
                                             {{ $message }}
@@ -25,7 +25,7 @@
                                 <div class="form-group">
                                     <input type="text" name="username"
                                         class="form-control form-control-user @error('username') is-invalid @enderror"
-                                        id=" exampleInputEmail" placeholder="Username" value="{{ old('username') }}">
+                                        id=" exampleInputUsername" placeholder="Username" value="{{ old('username') }}">
                                     @error('username')
                                         <div class="invalid-feadback">
                                             {{ $message }}

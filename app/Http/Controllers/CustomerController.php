@@ -49,30 +49,34 @@ class CustomerController extends Controller
             'status' => 'required'
         ]);
 
-        $input = $request->all();
-
-        if ($validator->passes()) {
+        if ($validator->fails()) {
             
-            // Store your user in database 
-            
-            return Response::json(['success' => '1']);
+            return Response::json(['errors' => $validator->errors()]);
             
         }
         
-        return Response::json(['errors' => $validator->errors()]);
-    
-    //     #Store Unique Order/Product Number
-    //     $unique_no = Customer::orderBy('id', 'DESC')->pluck('id')->first();
-    //     if($unique_no == null or $unique_no == ""){
-    //     #If Table is Empty
-    //     $unique_no = 1;
-    //     }
-    //     else{
-    //     #If Table has Already some Data
-    //     $unique_no = $unique_no + 1;
-    //   }
+        // $input = $request->all(); //untuk melakukan request data semuanya
+        
+            #Store Unique  Number
+            $unique_no = Customer::orderBy('id', 'DESC')->pluck('id')->first();
+            if($unique_no == null or $unique_no == ""){
+                #If Table is Empty
+                $unique_no = 1;
+                }
+                else{
+                    #If Table has Already some Data
+                    $unique_no = $unique_no + 1;
+                  }
 
-    //   return 'PHL'.sprintf("%04s", $unique_no);
+            $input['customer_code'] = 'PHL'.sprintf("%04s", $unique_no);
+            $input['customer_name'] = $request->name;
+            $input['phone'] = $request->phone;
+            $input['address'] = $request->address;
+            $input['gender_id'] = $request->gender;
+            $input['status_id'] = $request->status;
+            
+            Customer :: create($input);
+            return Response::json(['success' => '1']);
     }
 
     /**

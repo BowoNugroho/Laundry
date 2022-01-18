@@ -61,11 +61,11 @@
                             <strong id="status-error"></strong>
                         </span>
                     </div>
+                    <div class="modal-footer ">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-primary" id="submitForm">Tambah</button>
+                    </div>
                 </form>
-                <div class="modal-footer ">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button class="btn btn-primary" id="submitForm">Tambah</button>
-                </div>
             </div>
         </div>
     </div>
@@ -106,11 +106,7 @@
 
                 }
                 if (data.success) {
-                    $('#success-msg').removeClass('hide');
-                    setInterval(function() {
-                        // $('#SignUp').modal('hide');
-                        $('#success-msg').addClass('hide');
-                    }, 3000);
+                    location.reload();
                 }
             },
         });
