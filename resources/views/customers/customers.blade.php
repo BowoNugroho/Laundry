@@ -1,7 +1,6 @@
 @extends('layouts.main')
 @section('content')
     <div class="container-fluid">
-
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Pelanggan</h1>
         <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
@@ -16,7 +15,7 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header d-sm-flex justify-content-between py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Data Pelanggan Hoki Laundry</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Data Customer Hoki Laundry</h6>
                 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm body" data-bs-toggle="modal"
                     data-bs-target="#exampleModal"><i class="bi bi-person-plus-fill"></i>
                     Tambah </a>
@@ -30,7 +29,7 @@
                                 <th>No</th>
                                 <th>Kode</th>
                                 <th>Nama</th>
-                                <th>Alamat</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -40,11 +39,20 @@
                                     <td>{{ $loop->iteration }} </td>
                                     <td>{{ $customer->customer_code }} </td>
                                     <td>{{ $customer->customer_name }}</td>
-                                    <td>{{ $customer->address }}</td>
                                     <td>
-                                        <a href="" class="badge bg-primary"><i class="bi bi-eye"></i></a>
-                                        <a href="" class="badge bg-warning"><i class="bi bi-pencil-square"></i></a>
-                                        <a href="" class="badge bg-danger"><i class="bi bi-trash"></i></a>
+                                        @if ($customer->status->id == '1')
+                                            <i class="bi bi-person-check-fill" style="color: rgb(49, 216, 91)"></i>
+                                        @else
+                                            <i class="bi bi-person-x-fill" style="color: rgb(216, 49, 49)"></i>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="/customer/{{ $customer->id }}"
+                                            class="badge bg-primary btn-circle btn-sm"><i class="bi bi-eye"></i></a>
+                                        <a href="" class="badge bg-warning btn-circle btn-sm"><i
+                                                class="bi bi-pencil-square"></i></a>
+                                        <a href="" class="badge bg-danger btn-circle btn-sm"><i
+                                                class="bi bi-trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
