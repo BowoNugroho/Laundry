@@ -19,4 +19,8 @@ class Customer extends Model
     {
     return $this->belongsTo(Status::class);
     }
+    public function getRouteKeyName()
+    {
+    return 'customer_name';
+    }
 }

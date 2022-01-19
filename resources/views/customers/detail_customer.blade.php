@@ -8,7 +8,7 @@
                 For more information about DataTables, please visit the <a target="_blank"
                     href="https://datatables.net">official DataTables documentation</a>.</p>
             <!-- DataTales Example -->
-            <div class="col-xl-6 col-md-6 mb-4 ">
+            <div class="col-xl-6 col-md-6 mb-4 " style="margin-left:auto;margin-right:auto">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">Informasi Detail Member</h6>
@@ -19,7 +19,8 @@
                         @endif
                     </div>
                     <div class="card-body">
-                        <table class="table " id="dataTable" width="100%" cellspacing="0">
+                        <table class="table " id="dataTable" width="100%" cellspacing="0"
+                            style="margin-left:auto;margin-right:auto" border="1">
                             <thead>
                                 <tr>
                                     <td>Kode Customer</td>

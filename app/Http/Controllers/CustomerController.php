@@ -19,7 +19,7 @@ class CustomerController extends Controller
         // return Customer::all();
         return view('customers.customers', [
         "title" => "Customer" ,
-        'customers' => Customer::all()
+        'customers' => Customer::latest()->get()
     ]);
     }
 
@@ -124,6 +124,7 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //
+        Customer :: destroy($customer->id);
+        return redirect ('/customer')->with('success', 'Berhasil Menghapus Data');
     }
 }
