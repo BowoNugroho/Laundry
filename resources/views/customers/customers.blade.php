@@ -12,14 +12,18 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <!-- DataTales Example -->
+
+        {{-- modal untuk menambahkan customer --}}
+        @include('customers.add_customer')
+        {{-- modal untuk edit customer --}}
+        @include('customers.edit_customer')
+
         <div class="card shadow mb-4">
             <div class="card-header d-sm-flex justify-content-between py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Data Customer Hoki Laundry</h6>
                 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm body" data-bs-toggle="modal"
                     data-bs-target="#exampleModal"><i class="bi bi-person-plus-fill"></i>
                     Tambah </a>
-                @include('customers.add_customer')
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -55,8 +59,15 @@
                                     <td>
                                         <a href="/customer/{{ $customer->customer_name }}"
                                             class="badge bg-primary btn-circle btn-sm"><i class="bi bi-eye"></i></a>
-                                        <a href="" class="badge bg-warning btn-circle btn-sm"><i
-                                                class="bi bi-pencil-square"></i></a>
+                                        <button type="button" class="badge bg-warning btn-circle btn-sm border-0"
+                                            id="btnEditForm" data-bs-toggle="modal" data-bs-target="#editModal"
+                                            data-code="{{ $customer->customer_code }}"
+                                            data-name="{{ $customer->customer_name }}"
+                                            data-phone="{{ $customer->phone }}"
+                                            data-address="{{ $customer->address }}"
+                                            data-gender="{{ $customer->gender->id }}"
+                                            data-status="{{ $customer->status->id }}"><i
+                                                class="bi bi-pencil-square"></i></button>
                                         <form action="/customer/{{ $customer->customer_name }}" method="post"
                                             class="d-inline">
                                             @method('delete')
@@ -74,4 +85,31 @@
             </div>
         </div>
     </div>
+    {{-- jQuery untuk mengirimkan data ke modal (edit data dengan modal) --}}
+    <script type="text/javascript">
+        $('body').on('click', '#btnEditForm', function() {
+            let code = $(this).data('code');
+            let name = $(this).data('name');
+            let phone = $(this).data('phone');
+            let address = $(this).data('address');
+            let gender = $(this).data('gender');
+            let status = $(this).data('status');
+
+            $('#edit-code').val(code);
+            $('#edit-name').val(name);
+            $('#edit-phone').val(phone);
+            $('#edit-address').val(address);
+            // $('#edit-gender').val(code);
+            if (gender == 1) {
+                $('#edit-gender1').prop('checked', true);
+            } else {
+                $('#edit-gender2').prop('checked', true);
+            }
+            $('#edit-status option').filter(function() {
+                return ($(this).val() == status);
+            }).prop('selected', true);
+
+        });
+    </script>
+
 @endsection
