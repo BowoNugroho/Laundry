@@ -12,7 +12,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-
+        <div id="updateSuccess" class="hidden">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <div id="messages_content"></div>
+        </div>
         {{-- modal untuk menambahkan customer --}}
         @include('customers.add_customer')
         {{-- modal untuk edit customer --}}
@@ -57,19 +61,12 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="/customer/{{ $customer->customer_name }}"
+                                        <a href="/customer/{{ $customer->id }}"
                                             class="badge bg-primary btn-circle btn-sm"><i class="bi bi-eye"></i></a>
                                         <button type="button" class="badge bg-warning btn-circle btn-sm border-0"
                                             id="btnEditForm" data-bs-toggle="modal" data-bs-target="#editModal"
-                                            data-code="{{ $customer->customer_code }}"
-                                            data-name="{{ $customer->customer_name }}"
-                                            data-phone="{{ $customer->phone }}"
-                                            data-address="{{ $customer->address }}"
-                                            data-gender="{{ $customer->gender->id }}"
-                                            data-status="{{ $customer->status->id }}"><i
-                                                class="bi bi-pencil-square"></i></button>
-                                        <form action="/customer/{{ $customer->customer_name }}" method="post"
-                                            class="d-inline">
+                                            data-id="{{ $customer->id }}"><i class="bi bi-pencil-square"></i></button>
+                                        <form action="/customer/{{ $customer->id }}" method="post" class="d-inline">
                                             @method('delete')
                                             @csrf
                                             <button class="badge bg-danger btn-circle btn-sm border-0"
@@ -86,29 +83,35 @@
         </div>
     </div>
     {{-- jQuery untuk mengirimkan data ke modal (edit data dengan modal) --}}
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script type="text/javascript">
         $('body').on('click', '#btnEditForm', function() {
-            let code = $(this).data('code');
-            let name = $(this).data('name');
-            let phone = $(this).data('phone');
-            let address = $(this).data('address');
-            let gender = $(this).data('gender');
-            let status = $(this).data('status');
+            let id = $(this).data('id');
 
-            $('#edit-code').val(code);
-            $('#edit-name').val(name);
-            $('#edit-phone').val(phone);
-            $('#edit-address').val(address);
-            // $('#edit-gender').val(code);
-            if (gender == 1) {
-                $('#edit-gender1').prop('checked', true);
-            } else {
-                $('#edit-gender2').prop('checked', true);
-            }
-            $('#edit-status option').filter(function() {
-                return ($(this).val() == status);
-            }).prop('selected', true);
+            $.ajax({
+                url: '/customer/' + id + '/edit',
+                type: 'GET',
+                dataType: 'json',
+                success: function(res) {
+                    console.log(res);
+                    $('#edit-id').val(res[0].id);
+                    $('#edit-code').val(res[0].customer_code);
+                    $('#edit-name').val(res[0].customer_name);
+                    $('#edit-phone').val(res[0].phone);
+                    $('#edit-address').val(res[0].address);
 
+                    if (res[0].gender_id == 1) {
+                        $('#edit-gender1').prop('checked', true);
+                    } else {
+                        $('#edit-gender2').prop('checked', true);
+                    }
+
+                    $('#edit-status option').filter(function() {
+                        return ($(this).val() == res[0].status_id);
+                    }).prop('selected', true);
+
+                }
+            });
         });
     </script>
 

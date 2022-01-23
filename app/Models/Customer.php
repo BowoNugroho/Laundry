@@ -13,14 +13,10 @@ class Customer extends Model
 
     public function gender()
     {
-    return $this->belongsTo(Gender::class);
+        return $this->belongsTo(Gender::class);
     }
     public function status()
     {
-    return $this->belongsTo(Status::class);
-    }
-    public function getRouteKeyName()
-    {
-    return 'customer_name';
+        return $this->belongsTo(Status::class);
     }
 }

@@ -6,13 +6,14 @@
                 <h5 class="modal-title" id="exampleModalLabel">Ubah Customer</h5>
             </div>
             <div class="modal-body" style="overflow: hidden;">
-                <form method="POST" id="editForm">
+                <form method="POST" id="updateForm">
                     @method('PUT')
                     @csrf
+                    <input type="hidden" name="id" id="edit-id" class="form-control " value="">
                     <label for="title">Kode Customer :</label>
                     <div class="form-group has-feedback">
-                        <input type="text" name="code" id="edit-code" class="form-control " placeholder="Masukan code"
-                            value="{{ old('code') }}" readonly>
+                        <input type="text" name="code" id="edit-code" class="form-control " value="{{ old('code') }}"
+                            readonly>
                     </div>
                     <label for="title">Nama Customer :</label>
                     <div class="form-group has-feedback">
@@ -20,7 +21,7 @@
                             value="{{ old('name') }}">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         <span class="text-danger ">
-                            <strong id="name-error"></strong>
+                            <strong id="edit-name-error"></strong>
                         </span>
                     </div>
                     <label for="title">No Hp :</label>
@@ -29,7 +30,7 @@
                             placeholder="Masukan nomor hp" value="{{ old('phone') }}">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         <span class="text-danger ">
-                            <strong id="phone-error"></strong>
+                            <strong id="edit-phone-error"></strong>
                         </span>
                     </div>
                     <label for="title">Alamat :</label>
@@ -38,7 +39,7 @@
                             value="{{ old('address') }}"></textarea>
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         <span class="text-danger ">
-                            <strong id="address-error"></strong>
+                            <strong id="edit-address-error"></strong>
                         </span>
                     </div>
                     <div class="form-group">
@@ -53,7 +54,7 @@
                         </div>
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         <span class="text-danger ">
-                            <strong id="gender-error"></strong>
+                            <strong id="edit-gender-error"></strong>
                         </span>
                     </div>
                     <div class="form-group">
@@ -64,12 +65,12 @@
                         </select>
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         <span class="text-danger ">
-                            <strong id="status-error"></strong>
+                            <strong id="edit-status-error"></strong>
                         </span>
                     </div>
                     <div class="modal-footer ">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                        <button type="button" class="btn btn-primary" id="submitForm">Ubah</button>
+                        <button type="button" class="btn btn-primary" id="submitUpdateForm">Ubah</button>
                     </div>
                 </form>
             </div>
@@ -78,41 +79,45 @@
 </div>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript">
-    $('body').on('click', '#submitForm', function() {
-        var registerForm = $('#Customer');
+    $('body').on('click', '#submitUpdateForm', function() {
+        var registerForm = $('#updateForm');
+        var id = parseInt($('#edit-id').val());
         var formData = registerForm.serialize();
-        $('#name-error').html("");
-        $('#phone-error').html("");
-        $('#address-error').html("");
-        $('#gender-error').html("");
-        $('#status-error').html("");
+        $('#edit-name-error').html("");
+        $('#edit-phone-error').html("");
+        $('#edit-address-error').html("");
+        $('#edit-gender-error').html("");
+        $('#edit-status-error').html("");
 
         $.ajax({
-            url: '/customer',
-            type: 'POST',
+            url: '/customer/' + id,
+            type: 'PUT',
             data: formData,
             success: function(data) {
                 console.log(data);
                 if (data.errors) {
                     if (data.errors.name) {
-                        $('#name-error').html(data.errors.name[0]);
+                        $('#edit-name-error').html(data.errors.name[0]);
                     }
                     if (data.errors.phone) {
-                        $('#phone-error').html(data.errors.phone[0]);
+                        $('#edit-phone-error').html(data.errors.phone[0]);
                     }
                     if (data.errors.address) {
-                        $('#address-error').html(data.errors.address[0]);
+                        $('#edit-address-error').html(data.errors.address[0]);
                     }
                     if (data.errors.gender) {
-                        $('#gender-error').html(data.errors.gender[0]);
+                        $('#edit-gender-error').html(data.errors.gender[0]);
                     }
                     if (data.errors.status) {
-                        $('#status-error').html(data.errors.status[0]);
+                        $('#edit-status-error').html(data.errors.status[0]);
                     }
 
                 }
                 if (data.success) {
                     location.reload();
+                    $('#updateSuccess').removeClass('hidden').addClass('alert alert-success ');
+                    $('#messages_content').html('Berhasil mengubah data.');
+                    // $('#updateSuccess').show();
                 }
             },
         });

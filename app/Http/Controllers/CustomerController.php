@@ -101,7 +101,9 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        $edit = Customer::where('id',$customer->id )->get();
+
+        return Response::json($edit);
     }
 
     /**
@@ -113,7 +115,32 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'phone' => 'required|max:255',
+            'address' => 'required|max:255',
+            'gender' => 'required',
+            'status' => 'required'
+        ]);
+        // return $update = $request->all(); 
+        if ($validator->fails()) {
+            
+            return Response::json(['errors' => $validator->errors()]);
+            
+        }
+
+            $update['customer_code'] = $request->code;
+            $update['customer_name'] = $request->name;
+            $update['phone'] = $request->phone;
+            $update['address'] = $request->address;
+            $update['gender_id'] = $request->gender;
+            $update['status_id'] = $request->status;
+
+            // return $customer->id;
+            Customer :: where('id',$customer->id)
+                     -> update($update);
+            return Response::json(['success' => '1']);
+
     }
 
     /**
