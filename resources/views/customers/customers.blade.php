@@ -13,8 +13,7 @@
             </div>
         @endif
         <div id="updateSuccess" class="hidden">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                    aria-hidden="true">&times;</span></button>
+            <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close"></button>
             <div id="messages_content"></div>
         </div>
         {{-- modal untuk menambahkan customer --}}

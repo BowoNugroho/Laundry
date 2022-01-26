@@ -115,9 +115,6 @@
                 }
                 if (data.success) {
                     location.reload();
-                    $('#updateSuccess').removeClass('hidden').addClass('alert alert-success ');
-                    $('#messages_content').html('Berhasil mengubah data.');
-                    // $('#updateSuccess').show();
                 }
             },
         });
