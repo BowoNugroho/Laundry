@@ -17,7 +17,7 @@ class CreateCustomersTable extends Migration
             $table->id();
             $table->foreignId('gender_id')->constrained('genders');
             $table->foreignId('status_id')->constrained('statuses');
-            $table->foreignId('cabang_id')->constrained('branches');
+            $table->foreignId('branch_id')->constrained('branches');
             $table->string('customer_code');
             $table->string('customer_name');
             $table->string('phone');

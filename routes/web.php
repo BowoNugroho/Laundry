@@ -5,6 +5,7 @@ use  App\Http\Controllers\LoginController;
 use  App\Http\Controllers\RegisterController;
 use  App\Http\Controllers\DashboardController;
 use  App\Http\Controllers\CustomerController;
+use  App\Http\Controllers\ServiceController;
 
 
 /*
@@ -30,3 +31,5 @@ Route::get('/dashboard',  [DashboardController::class, 'index'])->middleware('au
 
 // Route::get('/customer',  [CustomerController::class, 'index'])->middleware('auth');
 Route::resource('/customer', CustomerController::class)->middleware('auth');
+
+Route::resource('/service', ServiceController::class)->middleware('auth');

@@ -19,7 +19,7 @@ class CustomerController extends Controller
         // return Customer::where('cabang_id', auth()->user()->cabang_id)->get();
         return view('customers.customers', [
         "title" => "Customer" ,
-        'customers' => Customer::where('cabang_id', auth()->user()->cabang_id)->latest()->get()
+        'customers' => Customer::where('branch_id', auth()->user()->branch_id)->latest()->get()
     ]);
     }
 
@@ -74,7 +74,7 @@ class CustomerController extends Controller
             $input['address'] = $request->address;
             $input['gender_id'] = $request->gender;
             $input['status_id'] = $request->status;
-            $input['cabang_id'] = auth()->user()->cabang_id;
+            $input['branch_id'] = auth()->user()->branch_id;
             Customer :: create($input);
             return Response::json(['success' => '1']);
     }
