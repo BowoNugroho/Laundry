@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
+class Price extends Model
 {
     use HasFactory;
 
     protected $guarded =['id'];
 
-    public function serviceType()
+    public function service()
     {
-        return $this->belongsTo(ServiceType::class);
+        return $this->belongsTo(Service::class);
     }
-    
 }

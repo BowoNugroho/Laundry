@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateServicesTable extends Migration
+class CreatePricesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('prices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('service_type_id')->constrained('service_types');
-            $table->foreignId('branch_id')->constrained('branches');
+            $table->foreignId('service_id')->constrained('services');
             $table->string('name');
-            $table->string('description');
+            $table->string('price');
+            $table->string('estimated_time');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('prices');
     }
 }
