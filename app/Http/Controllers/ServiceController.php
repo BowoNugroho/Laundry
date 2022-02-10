@@ -14,7 +14,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        return view('service.service',[
+            "title" =>  "Layanan"
+        ]);
     }
 
     /**

@@ -36,8 +36,8 @@
                 <span>Customer</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-target="#collapseTwo" aria-expanded="true"
+        <li class="nav-item {{ Request::is('service') ? 'active' : '' }}">
+            <a class="nav-link collapsed" href="/service" data-target="#collapseTwo" aria-expanded="true"
                 aria-controls="collapseTwo">
                 <i class="bi bi-handbag"></i>
                 <span>Layanan</span>
