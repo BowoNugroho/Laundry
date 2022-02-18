@@ -6,6 +6,7 @@ use  App\Http\Controllers\RegisterController;
 use  App\Http\Controllers\DashboardController;
 use  App\Http\Controllers\CustomerController;
 use  App\Http\Controllers\ServiceController;
+use  App\Http\Controllers\SubServiceController;
 use  App\Http\Controllers\BranchController;
 
 
@@ -34,4 +35,5 @@ Route::get('/dashboard',  [DashboardController::class, 'index'])->middleware('au
 Route::resource('/customer', CustomerController::class)->middleware('auth');
 
 Route::resource('/service', ServiceController::class)->middleware('auth');
-Route::resource('/coba', BranchController::class)->middleware('auth');
+
+Route::resource('/price', SubServiceController::class)->middleware('auth');

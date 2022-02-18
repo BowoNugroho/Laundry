@@ -19,7 +19,7 @@ class CustomerController extends Controller
         // return Customer::where('cabang_id', auth()->user()->cabang_id)->get();
         return view('customers.customers', [
         "title" => "Customer" ,
-        'customers' => Customer::where('branch_id', auth()->user()->branch_id)->latest()->get()
+        "customers" => Customer::where('branch_id', auth()->user()->branch_id)->latest()->get()
     ]);
     }
 
@@ -87,11 +87,10 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        return view('customers.coba');
-    //     return view('customers.detail_customer', [
-    //     "title" => "Customer" ,
-    //     'details' =>  $customer
-    // ]);
+        return view('customers.detail_customer', [
+        "title" => "Customer" ,
+        'details' =>  $customer
+    ]);
     }
 
     /**
