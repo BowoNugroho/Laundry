@@ -17,12 +17,12 @@
             Interface
         </div>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
                 aria-expanded="true" aria-controls="collapseTwo">
                 <i class="bi bi-cart4"></i>
                 <span>Transaksi</span>
             </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Components:</h6>
                     <a class="collapse-item" href="">Data Members</a>
@@ -49,6 +49,21 @@
                 <i class="bi bi-journals"></i>
                 <span>Laporan</span>
             </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                aria-expanded="true" aria-controls="collapseTwo">
+                <i class="bi bi-journal-bookmark"></i>
+                <span>Master Data</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Master:</h6>
+                    <a class="collapse-item " href="">Data User</a>
+                    <a class="collapse-item {{ Request::is('branch') ? 'active' : '' }}" href="/branch">Data
+                        Cabang</a>
+                </div>
+            </div>
         </li>
         <hr class="sidebar-divider">
         <div class="sidebar-heading">

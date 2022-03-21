@@ -37,3 +37,6 @@ Route::resource('/customer', CustomerController::class)->middleware('auth');
 Route::resource('/service', ServiceController::class)->middleware('auth');
 
 Route::resource('/price', SubServiceController::class)->middleware('auth');
+
+Route::resource('/user', UserController::class)->middleware('auth');
+Route::resource('/branch', BranchController::class)->middleware('auth');
