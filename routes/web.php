@@ -8,6 +8,7 @@ use  App\Http\Controllers\CustomerController;
 use  App\Http\Controllers\ServiceController;
 use  App\Http\Controllers\SubServiceController;
 use  App\Http\Controllers\BranchController;
+use  App\Http\Controllers\UserController;
 
 
 /*

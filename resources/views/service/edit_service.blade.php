@@ -7,6 +7,7 @@
             </div>
             <div class="modal-body" style="overflow: hidden;">
                 <form method="POST" id="updateServiceForm">
+                    @method('PUT')
                     @csrf
                     <input type="hidden" name="id" id="edit-id" class="form-control " value="">
                     <label for="title">Nama Layanan :</label>

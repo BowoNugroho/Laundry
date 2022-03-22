@@ -59,7 +59,7 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Master:</h6>
-                    <a class="collapse-item " href="">Data User</a>
+                    <a class="collapse-item {{ Request::is('user') ? 'active' : '' }}" href="/user">Data User</a>
                     <a class="collapse-item {{ Request::is('branch') ? 'active' : '' }}" href="/branch">Data
                         Cabang</a>
                 </div>
