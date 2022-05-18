@@ -43,6 +43,13 @@
                 <span>Layanan</span>
             </a>
         </li>
+        <li class="nav-item {{ Request::is('output') ? 'active' : '' }}">
+            <a class="nav-link collapsed" href="/output" data-target="#collapseTwo" aria-expanded="true"
+                aria-controls="collapseTwo">
+                <i class="bi bi-inboxes"></i>
+                <span>Output</span>
+            </a>
+        </li>
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-target="#collapseTwo" aria-expanded="true"
                 aria-controls="collapseTwo">

@@ -9,6 +9,7 @@ use  App\Http\Controllers\ServiceController;
 use  App\Http\Controllers\SubServiceController;
 use  App\Http\Controllers\BranchController;
 use  App\Http\Controllers\UserController;
+use  App\Http\Controllers\OutputController;
 
 
 /*
@@ -41,3 +42,4 @@ Route::resource('/price', SubServiceController::class)->middleware('auth');
 
 Route::resource('/user', UserController::class)->middleware('auth');
 Route::resource('/branch', BranchController::class)->middleware('auth');
+Route::resource('/output', OutputController::class)->middleware('auth');
