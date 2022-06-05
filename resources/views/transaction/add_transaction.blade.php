@@ -36,24 +36,18 @@
                     </div>
                     <div class="form-group">
                         <label>Jenis Kelamin:</label>
-                        <div class="form-group has-feedback">
-                            <div class="form-check-inline">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio1"
-                                        value="1">
-                                    <label class="form-check-label" for="inlineRadio1">Laki-laki</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio2"
-                                        value="2">
-                                    <label class="form-check-label" for="inlineRadio2">Perempuan</label>
-                                </div>
-                            </div>
-                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                            <span class="text-danger ">
-                                <strong id="gender-error"></strong>
-                            </span>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="1">
+                            <label class="form-check-label" for="inlineRadio1">Laki-laki</label>
                         </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="2">
+                            <label class="form-check-label" for="inlineRadio2">Perempuan</label>
+                        </div>
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        <span class="text-danger ">
+                            <strong id="gender-error"></strong>
+                        </span>
                     </div>
                     <div class="form-group">
                         <label>Status:</label>
@@ -75,7 +69,7 @@
         </div>
     </div>
 </div>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+{{-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript">
     $('body').on('click', '#submitForm', function() {
         var registerForm = $('#Customer');
@@ -116,4 +110,4 @@
             },
         });
     });
-</script>
+</script> --}}

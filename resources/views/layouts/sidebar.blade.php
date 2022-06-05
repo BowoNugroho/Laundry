@@ -17,17 +17,11 @@
             Interface
         </div>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
-                aria-expanded="true" aria-controls="collapseTwo">
+            <a class="nav-link " href="/transaction" data-target="#collapseUtilities" aria-expanded="true"
+                aria-controls="collapseUtilities">
                 <i class="bi bi-cart4"></i>
                 <span>Transaksi</span>
             </a>
-            <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Custom Components:</h6>
-                    <a class="collapse-item" href="">Data Members</a>
-                </div>
-            </div>
         </li>
         <li class="nav-item {{ Request::is('customer') ? 'active' : '' }}">
             <a class="nav-link " href="/customer" data-target="#collapseUtilities" aria-expanded="true"

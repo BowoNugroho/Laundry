@@ -10,6 +10,8 @@ use  App\Http\Controllers\SubServiceController;
 use  App\Http\Controllers\BranchController;
 use  App\Http\Controllers\UserController;
 use  App\Http\Controllers\OutputController;
+use  App\Http\Controllers\TransactionController;
+
 
 
 /*
@@ -43,3 +45,6 @@ Route::resource('/price', SubServiceController::class)->middleware('auth');
 Route::resource('/user', UserController::class)->middleware('auth');
 Route::resource('/branch', BranchController::class)->middleware('auth');
 Route::resource('/output', OutputController::class)->middleware('auth');
+Route::resource('/transaction', TransactionController::class)->middleware('auth');
+Route::get('/get-data-customer/{id}', [TransactionController::class, 'dataCustomer'])->name("get-data-customer")->middleware('auth');
+Route::get('/get-data-service/{id}', [TransactionController::class, 'dataService'])->name("get-data-service")->middleware('auth');
