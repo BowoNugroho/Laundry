@@ -17,8 +17,8 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->foreignId('service_type_id')->constrained('service_types');
             $table->foreignId('branch_id')->constrained('branches');
-            $table->string('name');
-            $table->string('description');
+            $table->string('service_name');
+            $table->string('service_description');
             $table->timestamps();
         });
     }

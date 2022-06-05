@@ -16,9 +16,9 @@ class CreateOutputsTable extends Migration
         Schema::create('outputs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('branch_id')->constrained('branches');
-            $table->string('name');
-            $table->string('description');
-            $table->string('price');
+            $table->string('output_name');
+            $table->string('output_description');
+            $table->string('output_price');
             $table->timestamps();
         });
     }

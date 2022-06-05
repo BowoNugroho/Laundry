@@ -20,8 +20,8 @@ class CreateCustomersTable extends Migration
             $table->foreignId('branch_id')->constrained('branches');
             $table->string('customer_code');
             $table->string('customer_name');
-            $table->string('phone');
-            $table->string('address');
+            $table->string('customer_phone');
+            $table->string('customer_address');
             $table->timestamps();
         });
     }
