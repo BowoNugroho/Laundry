@@ -55,9 +55,9 @@ class OutputController extends Controller
             
         }
 
-        $input['name'] = $request->name;
-        $input['description'] = $request->description;
-        $input['price'] = $request->price;
+        $input['output_name'] = $request->name;
+        $input['output_description'] = $request->description;
+        $input['output_price'] = $request->price;
         $input['branch_id'] = auth()->user()->branch_id;
 
         Output :: create($input);
@@ -112,9 +112,9 @@ class OutputController extends Controller
             
         }
 
-        $update['name'] = $request->name;
-        $update['description'] = $request->description;
-        $update['price'] = $request->price;
+        $update['output_name'] = $request->name;
+        $update['output_description'] = $request->description;
+        $update['output_price'] = $request->price;
 
         Output :: where('id',$output->id)
                      -> update($update);

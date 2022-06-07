@@ -37,9 +37,9 @@
                                 @foreach ($cabangs as $cabang)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
-                                        <td>{{ $cabang->name }}</td>
-                                        <td>{{ $cabang->phone }}</td>
-                                        <td>{{ $cabang->address }}</td>
+                                        <td>{{ $cabang->branch_name }}</td>
+                                        <td>{{ $cabang->branch_phone }}</td>
+                                        <td>{{ $cabang->branch_address }}</td>
                                         <td>
                                             <button type="button" class="badge bg-warning btn-circle btn-sm border-0"
                                                 id="btnEditForm" data-bs-toggle="modal" data-bs-target="#editModal"
@@ -74,9 +74,9 @@
                 success: function(res) {
                     console.log(res);
                     $('#edit-id').val(res[0].id);
-                    $('#edit-name').val(res[0].name);
-                    $('#edit-phone').val(res[0].phone);
-                    $('#edit-address').val(res[0].address);
+                    $('#edit-name').val(res[0].branch_name);
+                    $('#edit-phone').val(res[0].branch_phone);
+                    $('#edit-address').val(res[0].branch_address);
 
                 }
             });

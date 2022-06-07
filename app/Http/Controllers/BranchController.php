@@ -52,9 +52,9 @@ class BranchController extends Controller
             
         }
 
-        $input['name'] = $request->name;
-        $input['phone'] = $request->phone;
-        $input['address'] = $request->address;
+        $input['branch_name'] = $request->name;
+        $input['branch_phone'] = $request->phone;
+        $input['branch_address'] = $request->address;
 
         Branch :: create($input);
 
@@ -106,9 +106,9 @@ class BranchController extends Controller
             
         }
 
-            $update['name'] = $request->name;
-            $update['phone'] = $request->phone;
-            $update['address'] = $request->address;
+            $update['branch_name'] = $request->name;
+            $update['branch_phone'] = $request->phone;
+            $update['branch_address'] = $request->address;
 
             // return $branch->id;
             Branch :: where('id',$branch->id)

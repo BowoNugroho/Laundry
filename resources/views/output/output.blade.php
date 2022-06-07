@@ -37,9 +37,9 @@
                                 @foreach ($outputs as $output)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
-                                        <td>{{ $output->name }}</td>
-                                        <td>{{ $output->description }}</td>
-                                        <td>{{ $output->price }}</td>
+                                        <td>{{ $output->output_name }}</td>
+                                        <td>{{ $output->output_description }}</td>
+                                        <td>{{ $output->output_price }}</td>
                                         <td>
                                             <button type="button" class="badge bg-warning btn-circle btn-sm border-0"
                                                 id="btnEditForm" data-bs-toggle="modal" data-bs-target="#editOutputModal"
@@ -74,9 +74,9 @@
                 success: function(res) {
                     console.log(res);
                     $('#edit-id').val(res[0].id);
-                    $('#edit-name').val(res[0].name);
-                    $('#edit-price').val(res[0].price);
-                    $('#edit-description').val(res[0].description);
+                    $('#edit-name').val(res[0].output_name);
+                    $('#edit-price').val(res[0].output_price);
+                    $('#edit-description').val(res[0].output_description);
 
                 }
             });

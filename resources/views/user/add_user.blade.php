@@ -53,7 +53,7 @@
                         <label>Cabang :</label>
                         <select name="branch" class="form-control">
                             @foreach ($cabangs as $cabang)
-                                <option value="{{ $cabang->id }}">{{ $cabang->name }}</option>
+                                <option value="{{ $cabang->id }}">{{ $cabang->branch_name }}</option>
                             @endforeach
                         </select>
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>

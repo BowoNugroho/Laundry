@@ -56,10 +56,10 @@ class ServiceController extends Controller
         }
 
         $input['service_type_id'] = $request->service_type;
-        $input['name'] = $request->name;
-        $input['description'] = $request->description;
+        $input['service_name'] = $request->name;
+        $input['service_description'] = $request->description;
         $input['branch_id'] = auth()->user()->branch_id;
-
+        return $input;
         Service :: create($input);
 
         return Response::json(['success' => '1']);
@@ -115,8 +115,8 @@ class ServiceController extends Controller
         }
 
         $update['service_type_id'] = $request->service_type;
-        $update['name'] = $request->name;
-        $update['description'] = $request->description;
+        $update['service_name'] = $request->name;
+        $update['service_description'] = $request->description;
 
         Service :: where('id',$service->id)
                      -> update($update);

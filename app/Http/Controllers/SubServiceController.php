@@ -52,7 +52,7 @@ class SubServiceController extends Controller
         }
 
          $input['service_id'] = $request->service_id;
-         $input['name'] = $request->sub_service;
+         $input['price_name'] = $request->sub_service;
          $input['price'] = $request->price;
          $input['estimated_time'] = $request->estimated_time .' '.  $request->time;
 

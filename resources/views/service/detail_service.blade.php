@@ -22,7 +22,7 @@
                     @foreach ($prices as $price)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $price->name }}</td>
+                            <td>{{ $price->price_name }}</td>
                             <td>{{ $price->estimated_time }}</td>
                             <td>{{ $price->price }}</td>
                             <td>

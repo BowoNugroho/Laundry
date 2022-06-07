@@ -37,16 +37,18 @@
                                     @foreach ($services as $service)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
-                                            <td>{{ $service->name }}</td>
+                                            <td>{{ $service->service_name }}</td>
                                             <td>
 
-                                                @if ($service->serviceType->name == 'Kiloan')
-                                                    <div class="badge bg-success">{{ $service->serviceType->name }}</div>
+                                                @if ($service->serviceType->service_type_name == 'Kiloan')
+                                                    <div class="badge bg-success">
+                                                        {{ $service->serviceType->service_type_name }}</div>
                                                 @else
-                                                    <div class="badge bg-info">{{ $service->serviceType->name }}</div>
+                                                    <div class="badge bg-info">
+                                                        {{ $service->serviceType->service_type_name }}</div>
                                                 @endif
                                             </td>
-                                            <td>{{ $service->description }}</td>
+                                            <td>{{ $service->service_description }}</td>
                                             <td>
                                                 <a href="/service/{{ $service->id }}"
                                                     class="badge bg-primary btn-circle btn-sm spa_route"><i
@@ -103,8 +105,8 @@
                 success: function(res) {
                     console.log(res);
                     $('#edit-id').val(res[0].id);
-                    $('#edit-name').val(res[0].name);
-                    $('#edit-description').val(res[0].description);
+                    $('#edit-name').val(res[0].service_name);
+                    $('#edit-description').val(res[0].service_description);
 
                     $('#edit-service_type option').filter(function() {
                         return ($(this).val() == res[0].service_type_id);

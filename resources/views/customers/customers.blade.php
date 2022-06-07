@@ -49,8 +49,8 @@
                                     <th scope="row">{{ $loop->iteration }} </th>
                                     <td>{{ $customer->customer_code }} </td>
                                     <td>{{ $customer->customer_name }}</td>
-                                    <td>{{ $customer->phone }}</td>
-                                    <td>{{ $customer->address }}</td>
+                                    <td>{{ $customer->customer_phone }}</td>
+                                    <td>{{ $customer->customer_address }}</td>
                                     <td>{{ $customer->gender->gender }}</td>
                                     <td>
                                         @if ($customer->status->id == '1')
@@ -96,8 +96,8 @@
                     $('#edit-id').val(res[0].id);
                     $('#edit-code').val(res[0].customer_code);
                     $('#edit-name').val(res[0].customer_name);
-                    $('#edit-phone').val(res[0].phone);
-                    $('#edit-address').val(res[0].address);
+                    $('#edit-phone').val(res[0].customer_phone);
+                    $('#edit-address').val(res[0].customer_address);
 
                     if (res[0].gender_id == 1) {
                         $('#edit-gender1').prop('checked', true);
@@ -113,5 +113,4 @@
             });
         });
     </script>
-
 @endsection

@@ -23,7 +23,7 @@
                         <label>Jenis Layanan :</label>
                         <select name="service_type" id="edit-service_type" class="form-control">
                             @foreach ($serviceType as $s)
-                                <option value="{{ $s->id }}">{{ $s->name }}</option>
+                                <option value="{{ $s->id }}">{{ $s->service_type_name }}</option>
                             @endforeach
                         </select>
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>

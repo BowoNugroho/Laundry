@@ -21,7 +21,7 @@
                         <label>Jenis Layanan :</label>
                         <select name="service_type" class="form-control">
                             @foreach ($serviceType as $s)
-                                <option value="{{ $s->id }}">{{ $s->name }}</option>
+                                <option value="{{ $s->id }}">{{ $s->service_type_name }}</option>
                             @endforeach
                         </select>
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -31,8 +31,7 @@
                     </div>
                     <label for="title">Keterangan :</label>
                     <div class="form-group has-feedback">
-                        <textarea name="description" class="form-control" rows="2"
-                            value="{{ old('description') }}"></textarea>
+                        <textarea name="description" class="form-control" rows="2" value="{{ old('description') }}"></textarea>
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         <span class="text-danger ">
                             <strong id="description-error"></strong>

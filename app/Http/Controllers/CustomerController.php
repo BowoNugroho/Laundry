@@ -67,14 +67,15 @@ class CustomerController extends Controller
                     #If Table has Already some Data
                     $unique_no = $unique_no + 1;
                   }
-
+            
             $input['customer_code'] = 'PHL'.sprintf("%04s", $unique_no);
             $input['customer_name'] = $request->name;
-            $input['phone'] = $request->phone;
-            $input['address'] = $request->address;
+            $input['customer_phone'] = $request->phone;
+            $input['customer_address'] = $request->address;
             $input['gender_id'] = $request->gender;
             $input['status_id'] = $request->status;
             $input['branch_id'] = auth()->user()->branch_id;
+           //return $input;
             Customer :: create($input);
             return Response::json(['success' => '1']);
     }
@@ -131,8 +132,8 @@ class CustomerController extends Controller
 
             $update['customer_code'] = $request->code;
             $update['customer_name'] = $request->name;
-            $update['phone'] = $request->phone;
-            $update['address'] = $request->address;
+            $update['customer_phone'] = $request->phone;
+            $update['customer_address'] = $request->address;
             $update['gender_id'] = $request->gender;
             $update['status_id'] = $request->status;
 

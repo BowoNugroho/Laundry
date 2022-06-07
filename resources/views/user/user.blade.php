@@ -39,7 +39,7 @@
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->level->name }}</td>
-                                        <td>{{ $user->branch->name }}</td>
+                                        <td>{{ $user->branch->branch_name }}</td>
                                         <td>
                                             <button type="button" class="badge bg-warning btn-circle btn-sm border-0"
                                                 id="btnEditForm" data-bs-toggle="modal" data-bs-target="#editUserModal"
