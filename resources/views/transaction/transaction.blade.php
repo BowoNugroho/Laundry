@@ -20,9 +20,6 @@
         {{-- @include('customers.add_customer') --}}
         {{-- modal untuk edit customer --}}
         {{-- @include('customers.edit_customer') --}}
-        @foreach ($f as $w)
-            {{ $w }}
-        @endforeach
         <div class="row">
             <div class="col-sm-4 ">
                 <div class="card shadow mb-4">
@@ -126,7 +123,7 @@
                                         id="service">
                                         <option value="">Pilih disini.. </option>
                                         @foreach ($services as $s)
-                                            <option value="{{ $s->id }}">{{ $s->name }} </option>
+                                            <option value="{{ $s->id }}">{{ $s->service_name }} </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -143,35 +140,34 @@
                                     <select class="form-select" aria-label="Default select example" name="sub_layanan"
                                         id="sub_layanan">
                                         <option value="">Pilih disini.. </option>
-                                        @foreach ($types as $t)
-                                            <option value="{{ $t->id }}">{{ $t->customer_name }} </option>
-                                            @endforeach @foreach ($types as $t)
-                                                <option value="{{ $t->id }}">{{ $t->customer_name }} </option>
-                                            @endforeach
+
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4">
+                                <label>Estimasi Waktu :</label>
+                                <input type="text" name="estimated_time" id="estimated_time" class="form-control "
+                                    readonly>
+                            </div>
+                            <div class="col-sm-4">
                                 <label>Tarif :</label>
                                 <div class="form-group has-feedback">
-                                    <input type="text" name="customer_name" id="customer_name" class="form-control"
+                                    <input type="text" name="tarif" id="tarif" onchange="x();" class="form-control"
                                         readonly>
                                 </div>
                             </div>
-                            <div class="col-sm-3">
-                                <label>Estimasi Waktu :</label>
-                                <input type="text" name="date_out" class="form-control " placeholder="" value="" readonly>
-                            </div>
                             <div class="col-sm-2">
-                                <label>Satuan Waktu</label>
-                                <input type="text" name="date_out" class="form-control " placeholder="" value="" readonly>
-                            </div>
-                            <div class="col-sm-3">
                                 <label>Jumlah Kg/Pcs :</label>
                                 <div class="form-group has-feedback">
-                                    <input type="text" name="customer_name" id="customer_name" class="form-control">
+                                    <input type="text" name="jumlah1" id="jumlah1" onchange="x();" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <label>Jumlah Tarif :</label>
+                                <div class="form-group has-feedback">
+                                    <input type="text" name="jumlah2" id="jumlah2" class="form-control" readonly>
                                 </div>
                             </div>
                         </div>
@@ -188,7 +184,7 @@
                                         <th scope="col">Jenis Layanan</th>
                                         <th scope="col">Sub Layanan</th>
                                         <th scope="col">Estimasi</th>
-                                        <th scope="col">Jumlah</th>
+                                        <th scope="col">Jumlah Kg/pcs</th>
                                         <th scope="col">Tarif</th>
                                         <th scope="col">Jumlah Tarif</th>
                                         <th scope="col">Action</th>
@@ -236,8 +232,8 @@
                     success: function(res) {
                         console.log(res);
                         $("#customer_name").val(res[0].customer_name)
-                        $("#phone").val(res[0].phone)
-                        $("#address").val(res[0].address)
+                        $("#phone").val(res[0].customer_phone)
+                        $("#address").val(res[0].customer_address)
                     }
                 })
             })
@@ -253,52 +249,50 @@
                     success: function(res) {
                         console.log(res);
                         if (res) {
-                            $("#a").val(res[0][0].name)
+                            $("#a").val(res[0][0].service_type_name)
                         }
                         if (res) {
                             $('#sub_layanan').empty();
-                            $('#sub_layanan').append('<option hidden>Choose Course</option>');
-                            $.each(data, function(key, sub_layanan) {
+                            $('#sub_layanan').append('<option hidden>Pilih disini..</option>');
+                            $.each(res[0], function(key, sub_layanan) {
                                 $('select[name="sub_layanan"]').append(
                                     '<option value="' +
-                                    key + '">' + sub_layanan.name + '</option>');
+                                    sub_layanan.id + '">' + sub_layanan
+                                    .price_name +
+                                    '</option>');
                             });
+                        } else {
+                            $('#sub_layanan').empty();
                         }
                     }
                 })
             })
         })
-    </script>
-    {{-- jQuery untuk mengirimkan data ke modal (edit data dengan modal) --}}
-    {{-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript">
-        $('body').on('click', '#btnEditForm', function() {
-            let id = $(this).data('id');
+        $(document).ready(function() {
+            $("#sub_layanan").change(function() {
+                var id = $(this).val()
+                console.log(id);
 
-            $.ajax({
-                url: '/customer/' + id + '/edit',
-                type: 'GET',
-                dataType: 'json',
-                success: function(res) {
-                    console.log(res);
-                    $('#edit-id').val(res[0].id);
-                    $('#edit-code').val(res[0].customer_code);
-                    $('#edit-name').val(res[0].customer_name);
-                    $('#edit-phone').val(res[0].phone);
-                    $('#edit-address').val(res[0].address);
-
-                    if (res[0].gender_id == 1) {
-                        $('#edit-gender1').prop('checked', true);
-                    } else {
-                        $('#edit-gender2').prop('checked', true);
+                $.ajax({
+                    type: "GET",
+                    url: "/get-data-price/" + id,
+                    dataType: "json",
+                    success: function(res) {
+                        console.log(res);
+                        $("#tarif").val(res[0].price)
+                        $("#estimated_time").val(res[0].estimated_time)
                     }
+                })
+            })
+        })
 
-                    $('#edit-status option').filter(function() {
-                        return ($(this).val() == res[0].status_id);
-                    }).prop('selected', true);
-
-                }
-            });
-        });
-    </script> --}}
+        function x() {
+            var tarif = document.getElementById('tarif').value;
+            var jumlah1 = document.getElementById('jumlah1').value;
+            var result = parseInt(tarif) * parseInt(jumlah1);
+            if (!isNaN(result)) {
+                document.getElementById('jumlah2').value = result;
+            }
+        }
+    </script>
 @endsection

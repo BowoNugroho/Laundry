@@ -27,7 +27,7 @@ class TransactionController extends Controller
         "types"=> ServiceType::all(),
         "f" => ServiceType::join('services', 'services.service_type_id', '=', 'service_types.id')
                         ->join('prices', 'prices.service_id', '=', 'services.id')
-                        ->get(['services.*', 'service_types.name', 'prices.*' ])
+                        ->get(['services.*', 'service_types.service_type_name', 'prices.*' ])
     ]);
     }
 
@@ -106,7 +106,13 @@ class TransactionController extends Controller
     {
         $data = ServiceType::join('services', 'services.service_type_id', '=', 'service_types.id')
                         ->join('prices', 'prices.service_id', '=', 'services.id')
-                        ->where("services.id", $id)->get(['services.*', 'service_types.name', 'prices.*' ]);
+                        ->where("services.id", $id)->get(['services.*', 'service_types.service_type_name', 'prices.*' ]);
+        
+        return Response::json(array($data));
+    }
+    public function dataPrice($id)
+    {
+        $data = Price::where("id", $id)->first();
         
         return Response::json(array($data));
     }

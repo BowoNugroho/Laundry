@@ -48,3 +48,4 @@ Route::resource('/output', OutputController::class)->middleware('auth');
 Route::resource('/transaction', TransactionController::class)->middleware('auth');
 Route::get('/get-data-customer/{id}', [TransactionController::class, 'dataCustomer'])->name("get-data-customer")->middleware('auth');
 Route::get('/get-data-service/{id}', [TransactionController::class, 'dataService'])->name("get-data-service")->middleware('auth');
+Route::get('/get-data-price/{id}', [TransactionController::class, 'dataprice'])->name("get-data-price")->middleware('auth');
